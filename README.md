@@ -1,3 +1,4 @@
-## Nekoma
+## nekoma
 
-Hi Eddie
+> npm install
+> npm start
