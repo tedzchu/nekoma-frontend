@@ -7,7 +7,7 @@ const EventTable = props => (
         <th>Name</th>
         <th>Location</th>
         <th>Date</th>
-        <th>Actions</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>

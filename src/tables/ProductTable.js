@@ -12,7 +12,7 @@ const ProductTable = props => (
         <th>Enabled</th>
         <th>Count</th>
         <th>Last Restock Date</th>
-        <th>Actions</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -32,6 +32,7 @@ const ProductTable = props => (
             <td>{product.count}</td>
             <td>{product.restock}</td>
             <td>
+              <button>Details</button>
               <button
                 onClick={() => props.editRow(product)}
                 className="button muted-button"
@@ -48,7 +49,7 @@ const ProductTable = props => (
         ))
       ) : (
         <tr>
-          <td colSpan={6}>No products</td>
+          <td colSpan={8}>No products</td>
         </tr>
       )}
     </tbody>
