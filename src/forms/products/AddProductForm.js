@@ -33,7 +33,7 @@ const AddProductForm = props => {
       <input type="text" name="enabled" value={product.enabled} onChange={handleInputChange} />
       <label>Last Restock</label>
       <input type="text" name="restock" value={product.restock} onChange={handleInputChange} />
-      <button>Add new product</button>
+      <button>Save</button>
     </form>
   )
 }
