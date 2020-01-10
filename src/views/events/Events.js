@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
 import EventTable from '../../tables/EventTable'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Header from '../../components/Header'
 
 const Events = () => {
   const eventsData = [
@@ -23,16 +22,13 @@ const Events = () => {
   }
 
   return (
-    <div className="container">
-      <div class="header">
-        <Link to="/">
-          <FontAwesomeIcon icon="arrow-left" size="2x"/>
-        </Link>
-        <h1>Events</h1>
-      </div>
-      <button>Add new event</button>
-      <div className="flex-large">
-        <EventTable events={events} deleteEvent={deleteEvent} />
+    <div className="full-container">
+      <Header title="Events" back="/" />
+      <div className="container">
+        <button>Add new event</button>
+        <div className="flex-large">
+          <EventTable events={events} deleteEvent={deleteEvent} />
+        </div>
       </div>
     </div>
   )

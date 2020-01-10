@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import ProductTable from '../../tables/ProductTable'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Header from '../../components/Header'
 
 const Products = () => {
   const productsData = [
@@ -19,16 +18,13 @@ const Products = () => {
   }
 
   return (
-    <div className="container">
-      <div class="header">
-        <Link to="/">
-          <FontAwesomeIcon icon="arrow-left" size="2x"/>
-        </Link>
-        <h1>Products</h1>
-      </div>
-      <button>Add new product</button>
-      <div className="flex-large">
-        <ProductTable products={products} deleteProduct={deleteProduct} />
+    <div className="full-container">
+      <Header title="Products" back="/" />
+      <div className="container">
+        <button>Add new product</button>
+        <div className="flex-large">
+          <ProductTable products={products} deleteProduct={deleteProduct} />
+        </div>
       </div>
     </div>
   )
