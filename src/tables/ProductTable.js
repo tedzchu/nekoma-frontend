@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const ProductTable = props => (
@@ -32,7 +33,9 @@ const ProductTable = props => (
             <td>{product.count}</td>
             <td>{product.restock}</td>
             <td>
-              <button>Details</button>
+              <Link to={"/products/" + product.id}>
+                <button>Details</button>
+              </Link>
               <button
                 onClick={() => props.editRow(product)}
                 className="button muted-button"

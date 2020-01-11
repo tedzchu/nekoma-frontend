@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const EventTable = props => (
   <table>
@@ -18,7 +19,9 @@ const EventTable = props => (
             <td>{event.location}</td>
             <td>{event.date}</td>
             <td>
-              <button>Sales</button>
+              <Link to={"/events/" + event.id}>
+                <button>Sales</button>
+              </Link>
               <button
                 onClick={() => props.editRow(event)}
                 className="button muted-button"
