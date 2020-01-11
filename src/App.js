@@ -5,17 +5,17 @@ import Users from './views/Users'
 import Products from './views/products/Products'
 import Product from './views/products/Product'
 import Events from './views/events/Events'
-import Event from './views/events/Event'
+import Sales from './views/sales/Sales'
 
 const App = () => {
   return(
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/users" component={Users} />
-      <Route path="/products" component={Products} />
+      <Route exact path="/products" component={Products} />
       <Route path="/products/:id" component={Product} />
-      <Route path="/events" component={Events} />
-      <Route path="/events/:id" component={Event} />
+      <Route exact path="/events" component={Events} />
+      <Route path="/events/:id" component={Sales} />
     </Switch>
   )
 }
