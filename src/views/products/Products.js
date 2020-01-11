@@ -6,7 +6,6 @@ import Modal from '../../components/modal/Modal'
 import useModal from '../../components/modal/useModal'
 
 const Products = () => {
-  const addProductForm = <AddProductForm />
   const productsData = [
     { id: 1, sku: 'sku-2', name: 'product', category: 'cat', date: 'january', enabled: true, count: 29, restock: '01/09/2020' },
     { id: 2, sku: 'sku-5', name: 'product2', category: 'keychain', date: 'february', enabled: false, count: 10, restock: '11/26/2019' },
@@ -16,6 +15,7 @@ const Products = () => {
   ]
 
   const [products, setProducts] = useState(productsData)
+  const {isShowing, toggle} = useModal()
 
   const addProduct = product => {
     product.id = products.length + 1
@@ -26,7 +26,7 @@ const Products = () => {
     setProducts(products.filter(product => product.id !== id))
   }
 
-  const {isShowing, toggle} = useModal()
+  const addProductForm = <AddProductForm addProduct={addProduct} hide={toggle}/>
 
   return (
     <div className="full-container">
