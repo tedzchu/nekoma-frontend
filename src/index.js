@@ -9,7 +9,7 @@ import App from './App';
 library.add(faCheck, faTimes, faCoffee, faArrowLeft)
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <App />
   </BrowserRouter>,
   document.getElementById('root')
