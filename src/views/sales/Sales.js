@@ -36,7 +36,7 @@ const Sales = props => {
 
   return (
     <div className="full-container">
-      <Header title={"Sales for event " + eventId} back="/Events" />
+      <Header title={"Sales for event " + eventId} back="/events" />
       <div className="container">
         <button>Add new sale</button>
         <div className="flex-large">
