@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import SalesTable from '../../tables/SalesTable'
+//import SalesTable from '../../tables/SalesTable'
 import Header from '../../components/Header'
 
 const Sales = props => {
