@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ProductTable = props => (
   <table>
@@ -24,10 +24,11 @@ const ProductTable = props => (
             <td>{product.name}</td>
             <td>{product.category}</td>
             <td>{product.date}</td>
-            <td>{product.enabled ? (
-              <FontAwesomeIcon icon="check" />
+            <td>
+              {product.enabled ? (
+                <FontAwesomeIcon icon="check" />
               ) : (
-              <FontAwesomeIcon icon="times" />
+                <FontAwesomeIcon icon="times" />
               )}
             </td>
             <td>{product.count}</td>
@@ -42,7 +43,8 @@ const ProductTable = props => (
               >
                 Edit
               </button>
-              <button onClick={() => props.deleteProduct(product.id)}
+              <button
+                onClick={() => props.deleteProduct(product.id)}
                 className="button muted-button"
               >
                 Delete
@@ -57,6 +59,6 @@ const ProductTable = props => (
       )}
     </tbody>
   </table>
-)
+);
 
-export default ProductTable
+export default ProductTable;

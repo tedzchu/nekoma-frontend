@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react'
-import Header from '../../components/Header'
+import React, { useState, useEffect } from "react";
+import Header from "../../components/Header";
 
 const Product = props => {
   const initialProductState = {
     product: {},
-    loading: true,
-  }
+    loading: true
+  };
 
-  const [product, setProduct] = useState(initialProductState)
+  const [product, setProduct] = useState(initialProductState);
 
   useEffect(() => {
     const getProduct = async () => {
       // probably await here eventually?
       // const { data } = await
 
-      const data = { id: props.match.params.id }
-      setProduct(data)
-    }
+      const data = { id: props.match.params.id };
+      setProduct(data);
+    };
 
-    getProduct()
-  }, [])
+    getProduct();
+  }, []);
 
   return product.loading ? (
     <div>Loading...</div>
@@ -30,8 +30,7 @@ const Product = props => {
         <h2>Some data about {product.id}</h2>
       </div>
     </div>
+  );
+};
 
-  )
-}
-
-export default Product
+export default Product;

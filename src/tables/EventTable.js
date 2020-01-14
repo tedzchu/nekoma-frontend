@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
 const EventTable = props => (
   <table>
@@ -28,7 +28,8 @@ const EventTable = props => (
               >
                 Edit
               </button>
-              <button onClick={() => props.deleteEvent(event.id)}
+              <button
+                onClick={() => props.deleteEvent(event.id)}
                 className="button muted-button"
               >
                 Delete
@@ -43,6 +44,6 @@ const EventTable = props => (
       )}
     </tbody>
   </table>
-)
+);
 
-export default EventTable
+export default EventTable;

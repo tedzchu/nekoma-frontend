@@ -1,8 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  return(
+  return (
     <div className="container">
       <Link to="/products">
         <div class="split left">
@@ -19,7 +19,7 @@ const Home = () => {
         </div>
       </Link>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
