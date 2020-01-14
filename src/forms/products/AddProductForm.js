@@ -1,42 +1,60 @@
 import React, { useState } from 'react'
+import DatePicker from 'react-datepicker'
 
 const AddProductForm = props => {
-  const initialFormState = { id: null, sku: '', name: '', category: '', date: '', enabled: '', count: '', restock: '' }
+  const categories = [ {name: 'Lily', sku: 'lil'}, {name: 'Raphie', sku: 'rph'}, {name: 'Tiny', sku: 'tny'}]
+  const today = new Date()
+  const initialFormState = { id: null, sku: '', name: '', category: '', date: today.toLocaleDateString(), enabled: true, count: '', restock: '' }
   const [product, setProduct] = useState(initialFormState)
+  const [date, setDate] = useState(today)
+
+  const generateSKU = name => {
+    return categories.find(cat => { return cat.name === name}).sku
+  }
 
   const handleInputChange = event => {
-    console.log(event)
     const { name, value } = event.target
 
     setProduct({ ...product, [name]: value })
   }
 
+  const handleDateChange = date => {
+    setDate(date)
+
+    setProduct({ ...product, date: date.toLocaleDateString()})
+  }
+
   return (
     <form
+    autoComplete="off"
       onSubmit={event => {
         event.preventDefault()
-        if (!product.sku || !product.name) return
-
+        if (!product.name || !product.category || !product.count) return
+        product.sku = generateSKU(product.category).concat('-#')
+        product.restock = product.date
         props.addProduct(product)
         setProduct(initialFormState)
 
         props.hide()
       }}
     >
-      <label>SKU</label>
-      <input type="text" name="sku" value={product.sku} onChange={handleInputChange} />
-      <label>Name</label>
-      <input type="text" name="name" value={product.name} onChange={handleInputChange} />
-      <label>Category</label>
-      <input type="text" name="category" value={product.category} onChange={handleInputChange} />
-      <label>Date Added</label>
-      <input type="text" name="date" value={product.date} onChange={handleInputChange} />
-      <label>Cycled In</label>
-      <input type="text" name="enabled" value={product.enabled} onChange={handleInputChange} />
-      <label>Initial Count</label>
-      <input type="text" name="count" value={product.count} onChange={handleInputChange} />
-      <label>Last Restock</label>
-      <input type="text" name="restock" value={product.restock} onChange={handleInputChange} />
+      <div className="flex-row">
+        <div className="flex-large">
+          <label>Name</label>
+          <input type="text" name="name" value={product.name} onChange={handleInputChange} />
+          <label>Date Added</label>
+          <DatePicker name="date" selected={date} onChange={handleDateChange} />
+        </div>
+        <div className="flex-large">
+          <label>Category</label>
+          <select name="category" value={product.category} onChange={handleInputChange}>
+            <option value=''>Select a category</option>
+            {categories.map(category =>(<option value={category.name}>{category.name}</option>))}
+          </select>
+          <label>Initial Count</label>
+          <input type="number" name="count" value={product.count} onChange={handleInputChange} />
+        </div>
+      </div>
       <button>Save</button>
     </form>
   )
