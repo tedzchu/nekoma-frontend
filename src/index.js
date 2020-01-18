@@ -35,7 +35,7 @@ ReactDOM.render(
       domain={config.domain}
       client_id={config.clientId}
       audience={'https://nekoma.auth0.com/api/v2/'}
-      redirect_uri={window.location.origin}
+      redirect_uri={window.location.origin + window.location.pathname}
       onRedirectCallback={onRedirectCallback}
     >
       <GraphQLProvider>
