@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useAuth0 } from "../react-auth0-spa";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useAuth0 } from '../react-auth0-spa';
 
 const Header = props => {
   const { logout } = useAuth0();

@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import DatePicker from "react-datepicker";
+import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
 
 const AddProductForm = props => {
   const categories = [
-    { name: "Lily", sku: "lil" },
-    { name: "Raphie", sku: "rph" },
-    { name: "Tiny", sku: "tny" }
+    { name: 'Lily', sku: 'lil' },
+    { name: 'Raphie', sku: 'rph' },
+    { name: 'Tiny', sku: 'tny' }
   ];
   const today = new Date();
   const initialFormState = {
     id: null,
-    sku: "",
-    name: "",
-    category: "",
+    sku: '',
+    name: '',
+    category: '',
     date: today.toLocaleDateString(),
     enabled: true,
-    count: "",
-    restock: ""
+    count: '',
+    restock: ''
   };
   const [product, setProduct] = useState(initialFormState);
   const [date, setDate] = useState(today);
@@ -45,7 +45,7 @@ const AddProductForm = props => {
       onSubmit={event => {
         event.preventDefault();
         if (!product.name || !product.category || !product.count) return;
-        product.sku = generateSKU(product.category).concat("-#");
+        product.sku = generateSKU(product.category).concat('-#');
         product.restock = product.date;
         props.addProduct(product);
         setProduct(initialFormState);

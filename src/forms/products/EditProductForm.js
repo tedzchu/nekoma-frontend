@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 const EditProductForm = props => {
   const categories = [
-    { name: "Lily", sku: "lil" },
-    { name: "Raphie", sku: "rph" },
-    { name: "Tiny", sku: "tny" }
+    { name: 'Lily', sku: 'lil' },
+    { name: 'Raphie', sku: 'rph' },
+    { name: 'Tiny', sku: 'tny' }
   ];
   const [product, setProduct] = useState(props.currentProduct);
 

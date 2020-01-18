@@ -1,14 +1,14 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-import { useAuth0 } from "./react-auth0-spa";
-import Home from "./views/Home";
-import Login from "./views/Login";
-import Users from "./views/Users";
-import PrivateRoute from "./components/PrivateRoute";
-import Products from "./views/products/Products";
-import Product from "./views/products/Product";
-import Events from "./views/events/Events";
-import Sales from "./views/sales/Sales";
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { useAuth0 } from './react-auth0-spa';
+import Home from './views/Home';
+import Login from './views/Login';
+import Users from './views/Users';
+import PrivateRoute from './components/PrivateRoute';
+import Products from './views/products/Products';
+import Product from './views/products/Product';
+import Events from './views/events/Events';
+import Sales from './views/sales/Sales';
 
 const App = () => {
   const { isAuthenticated, loading } = useAuth0();

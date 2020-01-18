@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ProductTable = props => (
   <table>
@@ -34,7 +34,7 @@ const ProductTable = props => (
             <td>{product.count}</td>
             <td>{product.restock}</td>
             <td>
-              <Link to={"/products/" + product.id}>
+              <Link to={'/products/' + product.id}>
                 <button>Details</button>
               </Link>
               <button

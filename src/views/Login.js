@@ -1,5 +1,5 @@
-import React from "react";
-import { useAuth0 } from "../react-auth0-spa";
+import React from 'react';
+import { useAuth0 } from '../react-auth0-spa';
 
 const Login = () => {
   const { loginWithRedirect } = useAuth0();
@@ -17,7 +17,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
