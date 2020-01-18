@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 //import SalesTable from '../../tables/SalesTable'
-import Header from "../../components/Header";
+import Header from '../../components/Header';
 
 const Sales = props => {
   const eventId = props.match.params.id;
 
-  console.log("fetching " + eventId);
+  console.log('fetching ' + eventId);
   const initialEventSalesState = {
     eventSales: {},
     loading: true
@@ -15,7 +15,7 @@ const Sales = props => {
     {
       id: 1,
       day: 2,
-      items: ["sku-1", "sku-3"],
+      items: ['sku-1', 'sku-3'],
       total: 20,
       cc: true,
       female: false
@@ -40,7 +40,7 @@ const Sales = props => {
 
   return (
     <div className="full-container">
-      <Header title={"Sales for event " + eventId} back="/events" />
+      <Header title={'Sales for event ' + eventId} back="/events" />
       <div className="container">
         <button>Add new sale</button>
         <div className="flex-large">

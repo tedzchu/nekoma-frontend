@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import UserTable from "../tables/UserTable";
-import AddUserForm from "../forms/AddUserForm";
-import EditUserForm from "../forms/EditUserForm";
+import React, { useState } from 'react';
+import UserTable from '../tables/UserTable';
+import AddUserForm from '../forms/AddUserForm';
+import EditUserForm from '../forms/EditUserForm';
 
 const Users = () => {
   const usersData = [
-    { id: 1, name: "Jake", username: "sk1llz7007" },
-    { id: 2, name: "Erik", username: "erik1125e" },
-    { id: 3, name: "Mara", username: "urmom" }
+    { id: 1, name: 'Jake', username: 'sk1llz7007' },
+    { id: 2, name: 'Erik', username: 'erik1125e' },
+    { id: 3, name: 'Mara', username: 'urmom' }
   ];
 
   const [users, setUsers] = useState(usersData);
@@ -22,7 +22,7 @@ const Users = () => {
   };
 
   const [editing, setEditing] = useState(false);
-  const initialFormState = { id: null, name: "", username: "" };
+  const initialFormState = { id: null, name: '', username: '' };
   const [currentUser, setCurrentUser] = useState(initialFormState);
 
   const editRow = user => {
