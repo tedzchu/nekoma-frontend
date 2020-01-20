@@ -27,7 +27,7 @@ export const GraphQLProvider = ({ children }) => {
 
   // https://github.com/apollographql/apollo-client/issues/3967#issuecomment-450255702
   const wsLink = new WebSocketLink({
-    uri: 'ws://nekoma.herokuapp.com/v1/graphql',
+    uri: 'wss://nekoma.herokuapp.com/v1/graphql',
     options: {
       reconnect: true,
       connectionParams: async () => {
