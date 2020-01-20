@@ -5,24 +5,31 @@ import Header from '../../components/Header';
 import Modal from '../../components/modal/Modal';
 import useModal from '../../components/modal/useModal';
 import EditProductForm from '../../forms/products/EditProductForm';
-import { useAuth0 } from '../../react-auth0-spa';
-import { useQuery } from '@apollo/react-hooks';
-import { CATEGORIES, PRODUCTS } from '../../components/queries';
+import { useQuery, useSubscription } from '@apollo/react-hooks';
+import { CATEGORIES, PRODUCTS, CATEGORIES_SUBSCRIPTION } from '../../components/queries';
 
-const CategoryList = userId => {
+const CategoryList = () => {
   const { data, loading, error } = useQuery(CATEGORIES);
 
   if (loading) return 'Loading';
   if (error) return `Error: ${error.message}`;
   if (!data) return 'None found';
 
-  console.log(data);
-  return data.categories.map(category => <div>{category.name}</div>);
+  return data.categories;
+};
+
+const CategorySubscription = () => {
+  const { data, loading, error } = useSubscription(CATEGORIES_SUBSCRIPTION);
+
+  if (loading) return 'Loading';
+  if (error) return `Error: ${error.message}`;
+  if (!data) return 'None found';
+
+  return data.categories;
 };
 
 const Products = () => {
-  const { user } = useAuth0();
-  console.log(CategoryList(user.sub));
+  const categoriesData = CategorySubscription();
   const productsData = [
     {
       id: 1,
@@ -79,8 +86,7 @@ const Products = () => {
   const [products, setProducts] = useState(productsData);
   const { isShowing, toggle } = useModal();
 
-  const addProduct = product => {
-    product.id = products.length + 1;
+  const AddProduct = product => {
     setProducts([...products, product]);
   };
 
@@ -116,7 +122,7 @@ const Products = () => {
   };
 
   const addProductForm = (
-    <AddProductForm addProduct={addProduct} hide={toggle} />
+    <AddProductForm addProduct={AddProduct} hide={toggle} categoryList={categoriesData} />
   );
   const editProductForm = (
     <EditProductForm

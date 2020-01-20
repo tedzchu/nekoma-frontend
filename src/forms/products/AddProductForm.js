@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
+import { useMutation } from '@apollo/react-hooks';
+import { ADD_PRODUCT } from '../../components/queries';
 
 const AddProductForm = props => {
-  const categories = [
-    { name: 'Lily', sku: 'lil' },
-    { name: 'Raphie', sku: 'rph' },
-    { name: 'Tiny', sku: 'tny' }
-  ];
+  const categories = props.categoryList
   const today = new Date();
   const initialFormState = {
     id: null,
@@ -18,13 +16,15 @@ const AddProductForm = props => {
     count: '',
     restock: ''
   };
+  const [addProduct, { data }] = useMutation(ADD_PRODUCT);
   const [product, setProduct] = useState(initialFormState);
   const [date, setDate] = useState(today);
 
-  const generateSKU = name => {
-    return categories.find(cat => {
-      return cat.name === name;
-    }).sku;
+  const generateSKU = id => {
+    const category = categories.find(cat => {
+      return cat.id === id;
+    });
+    return category.sku_code.concat((category.products.length + 1));
   };
 
   const handleInputChange = event => {
@@ -45,8 +45,15 @@ const AddProductForm = props => {
       onSubmit={event => {
         event.preventDefault();
         if (!product.name || !product.category || !product.count) return;
-        product.sku = generateSKU(product.category).concat('-#');
+        product.sku = generateSKU(parseInt(product.category));
         product.restock = product.date;
+        addProduct({ variables: {
+          name: product.name,
+          sku: product.sku,
+          count: parseInt(product.count),
+          cat_id: parseInt(product.category),
+          date_added: product.date}});
+        // this goes away after subscriptions v
         props.addProduct(product);
         setProduct(initialFormState);
 
@@ -74,7 +81,7 @@ const AddProductForm = props => {
           >
             <option value="">Select a category</option>
             {categories.map(category => (
-              <option key={category.sku} value={category.name}>
+              <option key={category.sku_code} value={category.id}>
                 {category.name}
               </option>
             ))}
