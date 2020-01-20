@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "56152f07ef33a7c464f489d8b9d2dcbb",
+    "revision": "c475ab8e0a8aa0faec39a12a08764519",
     "url": "/nekoma-frontend/index.html"
   },
   {
-    "revision": "1b4736799bbc597031a2",
+    "revision": "5f823f2b85aaf958bfb1",
     "url": "/nekoma-frontend/static/css/2.b90ce945.chunk.css"
   },
   {
-    "revision": "5f99daa70169aa10dec6",
+    "revision": "ca7e806991a16e19a0a8",
     "url": "/nekoma-frontend/static/css/main.b253ff34.chunk.css"
   },
   {
-    "revision": "1b4736799bbc597031a2",
-    "url": "/nekoma-frontend/static/js/2.a7f1497d.chunk.js"
+    "revision": "5f823f2b85aaf958bfb1",
+    "url": "/nekoma-frontend/static/js/2.76023a7b.chunk.js"
   },
   {
     "revision": "3cbd411405b0b5ba69c05afd71dd137d",
-    "url": "/nekoma-frontend/static/js/2.a7f1497d.chunk.js.LICENSE"
+    "url": "/nekoma-frontend/static/js/2.76023a7b.chunk.js.LICENSE"
   },
   {
-    "revision": "5f99daa70169aa10dec6",
-    "url": "/nekoma-frontend/static/js/main.03039a05.chunk.js"
+    "revision": "ca7e806991a16e19a0a8",
+    "url": "/nekoma-frontend/static/js/main.1159a022.chunk.js"
   },
   {
     "revision": "fa03a0597ac598a579ef",
