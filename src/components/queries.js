@@ -29,14 +29,20 @@ export const CATEGORIES = gql`
 
 // mutations: https://devhoot.ooo/build-a-react-graphql-app-with-apollo-client-powered-by-hasura-engine/
 export const ADD_PRODUCT = gql`
-  mutation($name: String!, $sku: String!, $count: Int!, $cat_id: Int!, $date_added: date!){
+  mutation(
+    $name: String!
+    $sku: String!
+    $count: Int!
+    $cat_id: Int!
+    $date_added: date!
+  ) {
     insert_products(
       objects: [
         {
-          name: $name,
-          sku: $sku,
-          count: $count,
-          category_id: $cat_id,
+          name: $name
+          sku: $sku
+          count: $count
+          category_id: $cat_id
           date_created: $date_added
         }
       ]
@@ -55,6 +61,33 @@ export const CATEGORIES_SUBSCRIPTION = gql`
       name
       sku_code
       products {
+        sku
+      }
+    }
+  }
+`;
+
+export const PRODUCTS_SUBSCRIPTION = gql`
+  subscription {
+    products {
+      id
+      sku
+      name
+      category {
+        name
+      }
+      date_created
+      enabled
+      count
+      last_restock
+    }
+  }
+`;
+
+export const DELETE_PRODUCT = gql`
+  mutation($id: Int!) {
+    delete_products(where: { id: { _eq: $id } }) {
+      returning {
         sku
       }
     }

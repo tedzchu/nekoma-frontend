@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_PRODUCT } from '../../components/queries';
 
 const AddProductForm = props => {
-  const categories = props.categoryList
+  const categories = props.categoryList;
   const today = new Date();
   const initialFormState = {
     id: null,
@@ -16,7 +16,7 @@ const AddProductForm = props => {
     count: '',
     restock: ''
   };
-  const [addProduct, { data }] = useMutation(ADD_PRODUCT);
+  const [addProduct] = useMutation(ADD_PRODUCT);
   const [product, setProduct] = useState(initialFormState);
   const [date, setDate] = useState(today);
 
@@ -24,7 +24,7 @@ const AddProductForm = props => {
     const category = categories.find(cat => {
       return cat.id === id;
     });
-    return category.sku_code.concat((category.products.length + 1));
+    return category.sku_code.concat(category.products.length + 1);
   };
 
   const handleInputChange = event => {
@@ -41,45 +41,46 @@ const AddProductForm = props => {
 
   return (
     <form
-      autoComplete="off"
+      autoComplete='off'
       onSubmit={event => {
         event.preventDefault();
         if (!product.name || !product.category || !product.count) return;
         product.sku = generateSKU(parseInt(product.category));
         product.restock = product.date;
-        addProduct({ variables: {
-          name: product.name,
-          sku: product.sku,
-          count: parseInt(product.count),
-          cat_id: parseInt(product.category),
-          date_added: product.date}});
-        // this goes away after subscriptions v
-        props.addProduct(product);
+        addProduct({
+          variables: {
+            name: product.name,
+            sku: product.sku,
+            count: parseInt(product.count),
+            cat_id: parseInt(product.category),
+            date_added: product.date
+          }
+        });
         setProduct(initialFormState);
 
         props.hide();
       }}
     >
-      <div className="flex-row">
-        <div className="flex-large">
+      <div className='flex-row'>
+        <div className='flex-large'>
           <label>Name</label>
           <input
-            type="text"
-            name="name"
+            type='text'
+            name='name'
             value={product.name}
             onChange={handleInputChange}
           />
           <label>Date Added</label>
-          <DatePicker name="date" selected={date} onChange={handleDateChange} />
+          <DatePicker name='date' selected={date} onChange={handleDateChange} />
         </div>
-        <div className="flex-large">
+        <div className='flex-large'>
           <label>Category</label>
           <select
-            name="category"
+            name='category'
             value={product.category}
             onChange={handleInputChange}
           >
-            <option value="">Select a category</option>
+            <option value=''>Select a category</option>
             {categories.map(category => (
               <option key={category.sku_code} value={category.id}>
                 {category.name}
@@ -88,8 +89,8 @@ const AddProductForm = props => {
           </select>
           <label>Initial Count</label>
           <input
-            type="number"
-            name="count"
+            type='number'
+            name='count'
             value={product.count}
             onChange={handleInputChange}
           />
