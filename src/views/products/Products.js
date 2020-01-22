@@ -70,17 +70,17 @@ const Products = () => {
   );
 
   return (
-    <div className='full-container'>
-      <Header title='Products' back='/' />
+    <div className="full-container">
+      <Header title="Products" back="/" />
       <Modal
         isShowing={isShowing}
         hide={toggle}
         title={editing ? 'Editing ' + currentProduct.name : 'Add a new product'}
         content={editing ? editProductForm : addProductForm}
       />
-      <div className='container'>
+      <div className="container">
         <button onClick={toggle}>Add new product</button>
-        <div className='flex-large'>
+        <div className="flex-large">
           <ProductTable editRow={editRow} deleteProduct={deleteProduct} />
         </div>
       </div>

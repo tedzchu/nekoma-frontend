@@ -36,16 +36,16 @@ export const GraphQLProvider = ({ children }) => {
           headers: {
             authorization: token ? `Bearer ${token}` : undefined
           }
-        }
+        };
       }
-    },
+    }
   });
-  
+
   const httpLink = new HttpLink({
-    uri: 'https://nekoma.herokuapp.com/v1/graphql',
+    uri: 'https://nekoma.herokuapp.com/v1/graphql'
   });
-  
-  const request = async (operation) => {
+
+  const request = async operation => {
     const token = isAuthenticated ? await getTokenSilently() : null;
     operation.setContext({
       headers: {
@@ -53,25 +53,26 @@ export const GraphQLProvider = ({ children }) => {
       }
     });
   };
-  
-  const requestLink = new ApolloLink((operation, forward) =>
-    new Observable(observer => {
-      let handle;
-      Promise.resolve(operation)
-        .then(oper => request(oper))
-        .then(() => {
-          handle = forward(operation).subscribe({
-            next: observer.next.bind(observer),
-            error: observer.error.bind(observer),
-            complete: observer.complete.bind(observer),
-          });
-        })
-        .catch(observer.error.bind(observer));
-  
-      return () => {
-        if (handle) handle.unsubscribe();
-      };
-    })
+
+  const requestLink = new ApolloLink(
+    (operation, forward) =>
+      new Observable(observer => {
+        let handle;
+        Promise.resolve(operation)
+          .then(oper => request(oper))
+          .then(() => {
+            handle = forward(operation).subscribe({
+              next: observer.next.bind(observer),
+              error: observer.error.bind(observer),
+              complete: observer.complete.bind(observer)
+            });
+          })
+          .catch(observer.error.bind(observer));
+
+        return () => {
+          if (handle) handle.unsubscribe();
+        };
+      })
   );
 
   const link = split(
@@ -81,15 +82,12 @@ export const GraphQLProvider = ({ children }) => {
       return kind === 'OperationDefinition' && operation === 'subscription';
     },
     wsLink,
-    httpLink,
+    httpLink
   );
 
   const client = new ApolloClient({
-    link: ApolloLink.from([
-      requestLink,
-      link,
-    ]),
-    cache: new InMemoryCache(),
+    link: ApolloLink.from([requestLink, link]),
+    cache: new InMemoryCache()
     // uri: 'https://nekoma.herokuapp.com/v1/graphql',
   });
 
