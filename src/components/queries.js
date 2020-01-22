@@ -35,6 +35,7 @@ export const ADD_PRODUCT = gql`
     $count: Int!
     $cat_id: Int!
     $date_added: date!
+    $last_restock: date
   ) {
     insert_products(
       objects: [
@@ -44,6 +45,7 @@ export const ADD_PRODUCT = gql`
           count: $count
           category_id: $cat_id
           date_created: $date_added
+          last_restock: $last_restock
         }
       ]
     ) {
@@ -89,6 +91,17 @@ export const DELETE_PRODUCT = gql`
     delete_products(where: { id: { _eq: $id } }) {
       returning {
         sku
+      }
+    }
+  }
+`;
+
+export const TOGGLE_ACTIVE = gql`
+  mutation($id: Int!, $enabled: Boolean!) {
+    update_products(where: { id: { _eq: $id } }, _set: { enabled: $enabled }) {
+      returning {
+        sku
+        enabled
       }
     }
   }

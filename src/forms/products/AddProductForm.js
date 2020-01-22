@@ -24,7 +24,11 @@ const AddProductForm = props => {
     const category = categories.find(cat => {
       return cat.id === id;
     });
-    return category.sku_code.concat(category.products.length + 1);
+    const skus = category.products.map(product => {
+      return parseInt(product.sku.substring(4));
+    });
+    const skuNumber = skus.length > 0 ? Math.max(...skus) + 1 : 1;
+    return category.sku_code.concat(skuNumber);
   };
 
   const handleInputChange = event => {
@@ -53,7 +57,8 @@ const AddProductForm = props => {
             sku: product.sku,
             count: parseInt(product.count),
             cat_id: parseInt(product.category),
-            date_added: product.date
+            date_added: product.date,
+            last_restock: product.restock
           }
         });
         setProduct(initialFormState);

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useSubscription } from '@apollo/react-hooks';
-import { PRODUCTS_SUBSCRIPTION } from '../components/queries';
+import { useMutation, useSubscription } from '@apollo/react-hooks';
+import { TOGGLE_ACTIVE, PRODUCTS_SUBSCRIPTION } from '../components/queries';
 
 const ProductTable = props => {
   const { data, loading, error } = useSubscription(PRODUCTS_SUBSCRIPTION);
-
+  const [toggleActive] = useMutation(TOGGLE_ACTIVE);
   if (loading) return 'Loading';
   if (error) return `Error: ${error.message}`;
   return (
@@ -24,7 +24,7 @@ const ProductTable = props => {
         </tr>
       </thead>
       <tbody>
-        {data.products ? (
+        {data.products.length > 0 ? (
           data.products.map(product => (
             <tr key={product.id}>
               <td>{product.sku}</td>
@@ -32,21 +32,24 @@ const ProductTable = props => {
               <td>{product.category.name}</td>
               <td>{product.date_created}</td>
               <td>
-                {product.enabled ? (
-                  <FontAwesomeIcon icon='check' />
-                ) : (
-                  <FontAwesomeIcon icon='times' />
-                )}
+                <FontAwesomeIcon
+                  icon={product.enabled ? 'check' : 'times'}
+                  onClick={() =>
+                    toggleActive({
+                      variables: { id: product.id, enabled: !product.enabled }
+                    })
+                  }
+                />
               </td>
               <td>{product.count}</td>
               <td>{product.last_restock}</td>
               <td>
-                <Link to={'/products/' + product.id}>
+                <Link to={`/products/${product.id}`}>
                   <button>Details</button>
                 </Link>
                 <button
                   onClick={() => props.editRow(product)}
-                  className='button muted-button'
+                  className="button muted-button"
                 >
                   Edit
                 </button>
@@ -56,7 +59,7 @@ const ProductTable = props => {
                       props.deleteProduct({ variables: { id: product.id } })
                     )
                   }
-                  className='button muted-button'
+                  className="button muted-button"
                 >
                   Delete
                 </button>
