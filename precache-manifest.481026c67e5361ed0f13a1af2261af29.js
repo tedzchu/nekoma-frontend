@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "32666a99337f61f543ae075e5f821318",
+    "revision": "ddf9e5e39160a84babf54a63f5614f66",
     "url": "/nekoma-frontend/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/nekoma-frontend/static/css/2.b90ce945.chunk.css"
   },
   {
-    "revision": "ab32fcefa9fb8d681ae3",
+    "revision": "f97566785bd4afc2b725",
     "url": "/nekoma-frontend/static/css/main.59c6c77f.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/nekoma-frontend/static/js/2.391a71ee.chunk.js.LICENSE"
   },
   {
-    "revision": "ab32fcefa9fb8d681ae3",
-    "url": "/nekoma-frontend/static/js/main.e3103e7d.chunk.js"
+    "revision": "f97566785bd4afc2b725",
+    "url": "/nekoma-frontend/static/js/main.44e3c606.chunk.js"
   },
   {
     "revision": "fa03a0597ac598a579ef",
