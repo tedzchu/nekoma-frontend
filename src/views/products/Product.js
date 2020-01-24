@@ -3,7 +3,7 @@ import Header from '../../components/Header';
 import { useLocation } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-const Product = props => {
+const Product = () => {
   const initialProductState = {
     product: {},
     loading: true
