@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header';
-import { useQuery } from '@apollo/react-hooks';
+import { useLocation } from 'react-router-dom';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 const Product = props => {
   const initialProductState = {
     product: {},
     loading: true
   };
+  const location = useLocation();
 
   const [product, setProduct] = useState(initialProductState);
 
   useEffect(() => {
     const getProduct = async () => {
-      // probably await here eventually?
-      // const { data } = await
-
-      const data = { id: props.match.params.id };
+      const data = location.state.product;
       setProduct(data);
     };
 
@@ -25,10 +24,22 @@ const Product = props => {
   return product.loading ? (
     <div>Loading...</div>
   ) : (
-    <div className="full-container">
-      <Header title={product.id} back="/products" />
-      <div className="container">
-        <h2>Some data about {product.id}</h2>
+    <div className='full-container'>
+      <Header title={product.sku} back='/products' />
+      <div className='container'>
+        <h2>Some data about {product.name}</h2>
+        <Tabs>
+          <TabList>
+            <Tab>Info</Tab>
+            <Tab>Trends</Tab>
+          </TabList>
+          <TabPanel>
+            <h2>hello</h2>
+          </TabPanel>
+          <TabPanel>
+            <h2>{product.count}</h2>
+          </TabPanel>
+        </Tabs>
       </div>
     </div>
   );

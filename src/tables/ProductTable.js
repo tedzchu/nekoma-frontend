@@ -15,7 +15,6 @@ const ProductTable = props => {
         <tr>
           <th>SKU</th>
           <th>Name</th>
-          <th>Category</th>
           <th>Date Added</th>
           <th>Enabled</th>
           <th>Count</th>
@@ -29,7 +28,6 @@ const ProductTable = props => {
             <tr key={product.id}>
               <td>{product.sku}</td>
               <td>{product.name}</td>
-              <td>{product.category.name}</td>
               <td>{product.date_created}</td>
               <td>
                 <FontAwesomeIcon
@@ -44,12 +42,19 @@ const ProductTable = props => {
               <td>{product.count}</td>
               <td>{product.last_restock}</td>
               <td>
-                <Link to={`/products/${product.id}`}>
+                <Link
+                  to={{
+                    pathname: `/products/${product.id}`,
+                    state: {
+                      product: data.products.find(product => product.id)
+                    }
+                  }}
+                >
                   <button>Details</button>
                 </Link>
                 <button
                   onClick={() => props.editRow(product)}
-                  className="button muted-button"
+                  className='button muted-button'
                 >
                   Edit
                 </button>
@@ -59,7 +64,7 @@ const ProductTable = props => {
                       props.deleteProduct({ variables: { id: product.id } })
                     )
                   }
-                  className="button muted-button"
+                  className='button muted-button'
                 >
                   Delete
                 </button>

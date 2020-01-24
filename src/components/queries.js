@@ -6,6 +6,9 @@ export const PRODUCTS = gql`
       sku
       name
       category_id
+      category {
+        name
+      }
       date_created
       enabled
       count
