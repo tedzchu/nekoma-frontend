@@ -19,14 +19,14 @@ const Product = props => {
     };
 
     getProduct();
-  }, []);
+  }, [location.state.product]);
 
   return product.loading ? (
     <div>Loading...</div>
   ) : (
-    <div className='full-container'>
-      <Header title={product.sku} back='/products' />
-      <div className='container'>
+    <div className="full-container">
+      <Header title={product.sku} back="/products" />
+      <div className="container">
         <h2>Some data about {product.name}</h2>
         <Tabs>
           <TabList>
