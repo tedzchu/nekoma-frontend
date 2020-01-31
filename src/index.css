@@ -1170,6 +1170,8 @@ caption {
 }
 
 .react-tabs__tab {
+  width: 50%;
+  text-align: center;
   display: inline-block;
   border: 1px solid transparent;
   border-bottom: none;
