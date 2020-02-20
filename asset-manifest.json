@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/nekoma-frontend/static/css/main.61a7aa71.chunk.css",
-    "main.js": "/nekoma-frontend/static/js/main.7ae990bc.chunk.js",
-    "main.js.map": "/nekoma-frontend/static/js/main.7ae990bc.chunk.js.map",
+    "main.js": "/nekoma-frontend/static/js/main.da4d790a.chunk.js",
+    "main.js.map": "/nekoma-frontend/static/js/main.da4d790a.chunk.js.map",
     "runtime-main.js": "/nekoma-frontend/static/js/runtime-main.395e9853.js",
     "runtime-main.js.map": "/nekoma-frontend/static/js/runtime-main.395e9853.js.map",
     "static/css/2.b90ce945.chunk.css": "/nekoma-frontend/static/css/2.b90ce945.chunk.css",
     "static/js/2.484c7f9b.chunk.js": "/nekoma-frontend/static/js/2.484c7f9b.chunk.js",
     "static/js/2.484c7f9b.chunk.js.map": "/nekoma-frontend/static/js/2.484c7f9b.chunk.js.map",
     "index.html": "/nekoma-frontend/index.html",
-    "precache-manifest.79ed2c7b8d6f1f343aad7d222511bcc3.js": "/nekoma-frontend/precache-manifest.79ed2c7b8d6f1f343aad7d222511bcc3.js",
+    "precache-manifest.d92fa716a5a649f40f2e44555f5621dd.js": "/nekoma-frontend/precache-manifest.d92fa716a5a649f40f2e44555f5621dd.js",
     "service-worker.js": "/nekoma-frontend/service-worker.js",
     "static/css/2.b90ce945.chunk.css.map": "/nekoma-frontend/static/css/2.b90ce945.chunk.css.map",
     "static/css/main.61a7aa71.chunk.css.map": "/nekoma-frontend/static/css/main.61a7aa71.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.b90ce945.chunk.css",
     "static/js/2.484c7f9b.chunk.js",
     "static/css/main.61a7aa71.chunk.css",
-    "static/js/main.7ae990bc.chunk.js"
+    "static/js/main.da4d790a.chunk.js"
   ]
 }
