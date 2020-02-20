@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AddRestockForm from '../../components/forms/restocks/AddRestockForm';
+import ProductActivity from './ProductActivity';
 import Header from '../../components/Header';
 import Modal from '../../components/modal/Modal';
 import useModal from '../../components/modal/useModal';
@@ -48,8 +49,8 @@ const Product = () => {
             <h2>hello</h2>
           </TabPanel>
           <TabPanel>
-            <button onClick={toggle}>Add new restock</button>
             <h2>{product.count}</h2>
+            <ProductActivity toggle={toggle} />
           </TabPanel>
         </Tabs>
       </div>
