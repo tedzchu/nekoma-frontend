@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import AddRestockForm from '../../forms/restocks/AddRestockForm';
+import AddRestockForm from '../../components/forms/restocks/AddRestockForm';
 import Header from '../../components/Header';
 import Modal from '../../components/modal/Modal';
 import useModal from '../../components/modal/useModal';
@@ -29,15 +29,15 @@ const Product = () => {
   return product.loading ? (
     <div>Loading...</div>
   ) : (
-    <div className="full-container">
-      <Header title={product.sku} back="/products" />
+    <div className='full-container'>
+      <Header title={product.sku} back='/products' />
       <Modal
         isShowing={isShowing}
         hide={toggle}
         title={'Add a new restock for ' + product.sku}
         content={addRestockForm}
       />
-      <div className="container">
+      <div className='container'>
         <h2>Some data about {product.name}</h2>
         <Tabs>
           <TabList>

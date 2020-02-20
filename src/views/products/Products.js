@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import ProductTable from '../../tables/ProductTable';
-import AddProductForm from '../../forms/products/AddProductForm';
+import ProductTable from '../../components/tables/ProductTable';
+import AddProductForm from '../../components/forms/products/AddProductForm';
+import EditProductForm from '../../components/forms/products/EditProductForm';
 import Header from '../../components/Header';
 import Modal from '../../components/modal/Modal';
 import useModal from '../../components/modal/useModal';
-import EditProductForm from '../../forms/products/EditProductForm';
 import { useSubscription, useMutation } from '@apollo/react-hooks';
 import {
   CATEGORIES_SUBSCRIPTION,
@@ -71,17 +71,17 @@ const Products = () => {
   );
 
   return (
-    <div className="full-container">
-      <Header title="Products" back="/" />
+    <div className='full-container'>
+      <Header title='Products' back='/' />
       <Modal
         isShowing={isShowing}
         hide={toggle}
         title={editing ? 'Editing ' + currentProduct.name : 'Add a new product'}
         content={editing ? editProductForm : addProductForm}
       />
-      <div className="container">
+      <div className='container'>
         <button onClick={toggle}>Add new product</button>
-        <div className="flex-large">
+        <div className='flex-large'>
           <ProductTable editRow={editRow} deleteProduct={deleteProduct} />
         </div>
       </div>

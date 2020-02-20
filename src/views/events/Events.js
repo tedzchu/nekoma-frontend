@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import EventTable from '../../tables/EventTable';
+import EventTable from '../../components/tables/EventTable';
 import Header from '../../components/Header';
 
 const Events = () => {
@@ -32,11 +32,11 @@ const Events = () => {
   };
 
   return (
-    <div className="full-container">
-      <Header title="Events" back="/" />
-      <div className="container">
+    <div className='full-container'>
+      <Header title='Events' back='/' />
+      <div className='container'>
         <button>Add new event</button>
-        <div className="flex-large">
+        <div className='flex-large'>
           <EventTable events={events} deleteEvent={deleteEvent} />
         </div>
       </div>

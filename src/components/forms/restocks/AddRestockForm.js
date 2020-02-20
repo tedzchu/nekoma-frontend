@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { useMutation } from '@apollo/react-hooks';
-import { ADD_RESTOCK } from '../../components/queries';
+import { ADD_RESTOCK } from '../../queries';
 
 const AddRestockForm = props => {
   const today = new Date();
@@ -29,7 +29,7 @@ const AddRestockForm = props => {
 
   return (
     <form
-      autoComplete="off"
+      autoComplete='off'
       onSubmit={event => {
         event.preventDefault();
         if (!restock.count) return;
@@ -46,19 +46,19 @@ const AddRestockForm = props => {
         props.hide();
       }}
     >
-      <div className="flex-row">
-        <div className="flex-large">
+      <div className='flex-row'>
+        <div className='flex-large'>
           <label>Count</label>
           <input
-            type="number"
-            name="count"
+            type='number'
+            name='count'
             value={restock.count}
             onChange={handleInputChange}
           />
         </div>
-        <div className="flex-large">
+        <div className='flex-large'>
           <label>Date Restocked</label>
-          <DatePicker name="date" selected={date} onChange={handleDateChange} />
+          <DatePicker name='date' selected={date} onChange={handleDateChange} />
         </div>
       </div>
       <button>Save</button>

@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import { useAuth0 } from './react-auth0-spa';
 import Home from './views/Home';
 import Login from './views/Login';
-import Users from './views/Users';
 import PrivateRoute from './components/PrivateRoute';
 import Products from './views/products/Products';
 import Product from './views/products/Product';
@@ -18,13 +17,12 @@ const App = () => {
   }
   return (
     <Switch>
-      {!isAuthenticated && <Route exact path="/" component={Login} />}
-      {isAuthenticated && <Route exact path="/" component={Home} />}
-      <PrivateRoute path="/users" component={Users} />
-      <PrivateRoute exact path="/products" component={Products} />
-      <PrivateRoute path="/products/:id" component={Product} />
-      <PrivateRoute exact path="/events" component={Events} />
-      <PrivateRoute path="/events/:id" component={Sales} />
+      {!isAuthenticated && <Route exact path='/' component={Login} />}
+      {isAuthenticated && <Route exact path='/' component={Home} />}
+      <PrivateRoute exact path='/products' component={Products} />
+      <PrivateRoute path='/products/:id' component={Product} />
+      <PrivateRoute exact path='/events' component={Events} />
+      <PrivateRoute path='/events/:id' component={Sales} />
     </Switch>
   );
 };

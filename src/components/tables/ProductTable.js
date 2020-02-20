@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useMutation, useSubscription } from '@apollo/react-hooks';
-import { TOGGLE_ACTIVE, PRODUCTS_SUBSCRIPTION } from '../components/queries';
+import { TOGGLE_ACTIVE, PRODUCTS_SUBSCRIPTION } from '../queries';
 
 const ProductTable = props => {
   const { data, loading, error } = useSubscription(PRODUCTS_SUBSCRIPTION);

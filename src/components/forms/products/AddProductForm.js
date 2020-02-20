@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { useMutation } from '@apollo/react-hooks';
-import { ADD_PRODUCT } from '../../components/queries';
+import { ADD_PRODUCT } from '../../queries';
 
 const AddProductForm = props => {
   const categories = props.categoryList;
@@ -45,7 +45,7 @@ const AddProductForm = props => {
 
   return (
     <form
-      autoComplete="off"
+      autoComplete='off'
       onSubmit={event => {
         event.preventDefault();
         if (!product.name || !product.category || !product.count) return;
@@ -66,26 +66,26 @@ const AddProductForm = props => {
         props.hide();
       }}
     >
-      <div className="flex-row">
-        <div className="flex-large">
+      <div className='flex-row'>
+        <div className='flex-large'>
           <label>Name</label>
           <input
-            type="text"
-            name="name"
+            type='text'
+            name='name'
             value={product.name}
             onChange={handleInputChange}
           />
           <label>Date Added</label>
-          <DatePicker name="date" selected={date} onChange={handleDateChange} />
+          <DatePicker name='date' selected={date} onChange={handleDateChange} />
         </div>
-        <div className="flex-large">
+        <div className='flex-large'>
           <label>Category</label>
           <select
-            name="category"
+            name='category'
             value={product.category}
             onChange={handleInputChange}
           >
-            <option value="">Select a category</option>
+            <option value=''>Select a category</option>
             {categories.map(category => (
               <option key={category.sku_code} value={category.id}>
                 {category.name}
@@ -94,8 +94,8 @@ const AddProductForm = props => {
           </select>
           <label>Initial Count</label>
           <input
-            type="number"
-            name="count"
+            type='number'
+            name='count'
             value={product.count}
             onChange={handleInputChange}
           />
