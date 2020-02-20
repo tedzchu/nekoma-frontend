@@ -59,6 +59,16 @@ export const ADD_PRODUCT = gql`
   }
 `;
 
+export const ADD_RESTOCK = gql`
+  mutation($sku: String!, $date: date!, $count: Int!) {
+    insert_restocks(objects: [{ sku: $sku, date: $date, count: $count }]) {
+      returning {
+        id
+      }
+    }
+  }
+`;
+
 export const CATEGORIES_SUBSCRIPTION = gql`
   subscription {
     categories {

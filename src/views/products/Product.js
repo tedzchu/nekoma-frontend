@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import AddRestockForm from '../../forms/restocks/AddRestockForm';
 import Header from '../../components/Header';
+import Modal from '../../components/modal/Modal';
+import useModal from '../../components/modal/useModal';
 import { useLocation } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
@@ -11,6 +14,7 @@ const Product = () => {
   const location = useLocation();
 
   const [product, setProduct] = useState(initialProductState);
+  const { isShowing, toggle } = useModal();
 
   useEffect(() => {
     const getProduct = async () => {
@@ -21,11 +25,18 @@ const Product = () => {
     getProduct();
   }, [location.state.product]);
 
+  const addRestockForm = <AddRestockForm hide={toggle} sku={product.sku} />;
   return product.loading ? (
     <div>Loading...</div>
   ) : (
     <div className="full-container">
       <Header title={product.sku} back="/products" />
+      <Modal
+        isShowing={isShowing}
+        hide={toggle}
+        title={'Add a new restock for ' + product.sku}
+        content={addRestockForm}
+      />
       <div className="container">
         <h2>Some data about {product.name}</h2>
         <Tabs>
@@ -37,6 +48,7 @@ const Product = () => {
             <h2>hello</h2>
           </TabPanel>
           <TabPanel>
+            <button onClick={toggle}>Add new restock</button>
             <h2>{product.count}</h2>
           </TabPanel>
         </Tabs>

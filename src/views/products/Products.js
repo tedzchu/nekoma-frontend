@@ -60,6 +60,7 @@ const Products = () => {
   const addProductForm = (
     <AddProductForm hide={toggle} categoryList={categoriesData} />
   );
+
   const editProductForm = (
     <EditProductForm
       editing={editing}
