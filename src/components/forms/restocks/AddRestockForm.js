@@ -7,7 +7,7 @@ const AddRestockForm = props => {
   const today = new Date();
   const initialFormState = {
     id: null,
-    sku: '',
+    proudct_id: '',
     date: today.toLocaleDateString(),
     count: ''
   };
@@ -33,10 +33,10 @@ const AddRestockForm = props => {
       onSubmit={event => {
         event.preventDefault();
         if (!restock.count) return;
-        restock.sku = props.sku;
+        restock.product_id = props.id;
         addRestock({
           variables: {
-            sku: restock.sku,
+            product_id: restock.product_id,
             count: parseInt(restock.count),
             date: restock.date
           }

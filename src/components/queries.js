@@ -60,8 +60,10 @@ export const ADD_PRODUCT = gql`
 `;
 
 export const ADD_RESTOCK = gql`
-  mutation($sku: String!, $date: date!, $count: Int!) {
-    insert_restocks(objects: [{ sku: $sku, date: $date, count: $count }]) {
+  mutation($product_id: Int!, $date: date!, $count: Int!) {
+    insert_restocks(
+      objects: [{ product_id: $product_id, date: $date, count: $count }]
+    ) {
       returning {
         id
       }

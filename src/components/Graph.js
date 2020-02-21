@@ -11,6 +11,7 @@ const chartConfig = {
       {
         label: 'Nice',
         lineTension: 0,
+        fill: false,
         data: [12, 19, 3, 5, 2, 3],
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
@@ -19,6 +20,9 @@ const chartConfig = {
     ]
   },
   options: {
+    legend: {
+      display: false
+    },
     scales: {
       yAxes: [
         {
@@ -35,6 +39,7 @@ const Chart = () => {
   const chartContainer = useRef(null);
   const [chartInstance, setChartInstance] = useState(null);
 
+  // https://dev.to/vcanales/using-chart-js-in-a-function-component-with-react-hooks-246l
   useEffect(() => {
     if (chartContainer && chartContainer.current) {
       const newChartInstance = new Chartjs(chartContainer.current, chartConfig);

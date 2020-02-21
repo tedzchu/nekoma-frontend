@@ -26,7 +26,7 @@ const Product = () => {
     getProduct();
   }, [location.state.product]);
 
-  const addRestockForm = <AddRestockForm hide={toggle} sku={product.sku} />;
+  const addRestockForm = <AddRestockForm hide={toggle} id={product.id} />;
   return product.loading ? (
     <div>Loading...</div>
   ) : (
