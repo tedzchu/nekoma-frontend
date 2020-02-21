@@ -64,9 +64,11 @@ const Chart = () => {
     updateDataset(0, data);
   };
 
+  // eventually use this https://github.com/chartjs/chartjs-plugin-annotation
+
   return (
     <div>
-      <button onClick={onButtonClick}>Randomize!</button>
+      {/*<button onClick={onButtonClick}>Randomize!</button>*/}
       <canvas ref={chartContainer} />
     </div>
   );

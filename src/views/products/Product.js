@@ -1,44 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import AddRestockForm from '../../components/forms/restocks/AddRestockForm';
 import ProductActivity from './ProductActivity';
 import Header from '../../components/Header';
 import Modal from '../../components/modal/Modal';
 import useModal from '../../components/modal/useModal';
-import { useLocation } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { useSubscription } from '@apollo/react-hooks';
+import { PRODUCTS_SUBSCRIPTION } from '../../components/queries';
 
-const Product = () => {
-  const initialProductState = {
-    product: {},
-    loading: true
-  };
-  const location = useLocation();
+const ProductSubscription = id => {
+  const { data, loading, error } = useSubscription(PRODUCTS_SUBSCRIPTION);
 
-  const [product, setProduct] = useState(initialProductState);
+  if (loading) return 'Loading';
+  if (error) return `Error: ${error.message}`;
+  if (!data) return 'None found';
+
+  return data.products.find(product => id);
+};
+
+const Product = ({ match }) => {
+  // https://tylermcginnis.com/react-router-url-parameters/
+  const product = ProductSubscription(match.params.id);
   const { isShowing, toggle } = useModal();
 
-  useEffect(() => {
-    const getProduct = async () => {
-      const data = location.state.product;
-      setProduct(data);
-    };
-
-    getProduct();
-  }, [location.state.product]);
-
   const addRestockForm = <AddRestockForm hide={toggle} id={product.id} />;
-  return product.loading ? (
-    <div>Loading...</div>
-  ) : (
-    <div className='full-container'>
-      <Header title={product.sku} back='/products' />
+  // LOL hack
+  return product.sku ? (
+    <div className="full-container">
+      <Header title={product.sku} back="/products" />
       <Modal
         isShowing={isShowing}
         hide={toggle}
         title={'Add a new restock for ' + product.sku}
         content={addRestockForm}
       />
-      <div className='container'>
+      <div className="container">
         <h2>Some data about {product.name}</h2>
         <Tabs>
           <TabList>
@@ -50,11 +46,13 @@ const Product = () => {
           </TabPanel>
           <TabPanel>
             <h2>{product.count}</h2>
-            <ProductActivity toggle={toggle} />
+            <ProductActivity toggle={toggle} restocks={product.restocks} />
           </TabPanel>
         </Tabs>
       </div>
     </div>
+  ) : (
+    <div>Loading...</div>
   );
 };
 

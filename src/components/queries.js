@@ -97,6 +97,11 @@ export const PRODUCTS_SUBSCRIPTION = gql`
       enabled
       count
       last_restock
+      restocks(order_by: { date: asc }) {
+        id
+        date
+        count
+      }
     }
   }
 `;
