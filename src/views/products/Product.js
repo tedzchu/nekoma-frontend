@@ -6,16 +6,19 @@ import Modal from '../../components/modal/Modal';
 import useModal from '../../components/modal/useModal';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useSubscription } from '@apollo/react-hooks';
-import { PRODUCTS_SUBSCRIPTION } from '../../components/queries';
+import { PRODUCT_SUBSCRIPTION } from '../../components/queries';
 
 const ProductSubscription = id => {
-  const { data, loading, error } = useSubscription(PRODUCTS_SUBSCRIPTION);
+  const { data, loading, error } = useSubscription(PRODUCT_SUBSCRIPTION, {
+    variables: { id: id }
+  });
 
   if (loading) return 'Loading';
   if (error) return `Error: ${error.message}`;
   if (!data) return 'None found';
 
-  return data.products.find(product => id);
+  // TODO: find a better way to return a single product from subscription
+  return data.products[0];
 };
 
 const Product = ({ match }) => {

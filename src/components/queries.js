@@ -106,6 +106,28 @@ export const PRODUCTS_SUBSCRIPTION = gql`
   }
 `;
 
+export const PRODUCT_SUBSCRIPTION = gql`
+  subscription($id: Int!) {
+    products(where: { id: { _eq: $id } }) {
+      id
+      sku
+      name
+      category {
+        name
+      }
+      date_created
+      enabled
+      count
+      last_restock
+      restocks(order_by: { date: asc }) {
+        id
+        date
+        count
+      }
+    }
+  }
+`;
+
 export const DELETE_PRODUCT = gql`
   mutation($id: Int!) {
     delete_products(where: { id: { _eq: $id } }) {
