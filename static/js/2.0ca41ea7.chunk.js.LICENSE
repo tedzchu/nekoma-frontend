@@ -19,6 +19,13 @@ and limitations under the License.
   http://jedwatson.github.io/classnames
 */
 
+/*!
+ * Chart.js v2.9.3
+ * https://www.chartjs.org
+ * (c) 2019 Chart.js Contributors
+ * Released under the MIT License
+ */
+
 /**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
  * @version 1.16.0
@@ -49,13 +56,6 @@ object-assign
 (c) Sindre Sorhus
 @license MIT
 */
-
-/*!
- * Chart.js v2.9.3
- * https://www.chartjs.org
- * (c) 2019 Chart.js Contributors
- * Released under the MIT License
- */
 
 /** @license React v16.12.0
  * react.production.min.js
