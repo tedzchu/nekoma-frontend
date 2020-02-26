@@ -35,6 +35,7 @@ ReactDOM.render(
       domain={config.domain}
       client_id={config.clientId}
       audience={'https://nekoma.auth0.com/api/v2/'}
+      // TODO: configure or find good value for redirect_uri on both dev/prod
       redirect_uri={window.top.location.origin}
       onRedirectCallback={onRedirectCallback}
     >
