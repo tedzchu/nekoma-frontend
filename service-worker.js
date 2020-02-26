@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/nekoma-frontend/precache-manifest.fac5bbb69ac05dd2d4021374b7b2f2af.js"
+  "/nekoma-frontend/precache-manifest.6ff0ba8b1d095de967ab38376e3799c3.js"
 );
 
 self.addEventListener('message', (event) => {
